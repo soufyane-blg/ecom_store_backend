@@ -1,0 +1,13 @@
+<h2>Sign Up</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <input name="username" placeholder="Username">
+    <input name="password" type="password">
+    <button type="submit">Create account</button>
+</form>
+
+<a href="{% url 'login' %}">Already have an account?</a>
+{% if error %}
+<p style="color:red">{{ error }}</p>
+{% endif %}

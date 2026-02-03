@@ -1,0 +1,18 @@
+<h1>Your Cart</h1>
+
+{% for item in items %}
+    <div>
+        <h3>{{ item.product.name }}</h3>
+        <p>Quantity: {{ item.quantity }}</p>
+        <p>Price: ${{ item.product.price }}</p>
+        <p>Total: ${{ item.quantity|floatformat:2 }}</p>
+    </div>
+    <form method="post" action="{% url 'create_order' %}">
+        {% csrf_token %}
+        <button type="submit">Checkout</button>
+    </form>
+{% empty %}
+    <p>Your cart is empty</p>
+{% endfor %}
+
+<a href="/">← Continue Shopping</a>

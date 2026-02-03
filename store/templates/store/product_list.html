@@ -1,0 +1,16 @@
+<a href="{% url 'cart_detail' %}">🛒 View Cart</a>
+<h1>Our Products</h1>
+
+{% for product in products %}
+    <div style="border:1px solid #ccc; margin:10px; padding:10px;">
+        <h3>
+            <a href="{% url 'product_detail' product.slug %}">
+                {{ product.name }}
+            </a>
+        </h3>
+        <p>{{ product.description }}</p>
+        <p>Price: ${{ product.price }}</p>
+        <p>Stock: {{ product.stock }}</p>
+        <img src="{{ product.image.url }}" width="200">
+    </div>
+{% endfor %}
